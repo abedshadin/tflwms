@@ -1,0 +1,189 @@
+/* ===== Global reset & layout ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+body {
+  line-height: 1.4;
+}
+
+/* ===== App shell ===== */
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full-width header */
+.app-header {
+  width: 100%;
+  background: #111827;
+  color: #f9fafb;
+  padding: 12px 20px;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+/* Main area takes full width and height minus header */
+.app-main {
+  flex: 1;
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: center; /* center card horizontally */
+  align-items: flex-start; /* start at top */
+}
+
+/* Shared card style for forms / dashboard */
+.app-card,
+.form-wrapper,
+.login-card,
+.dashboard-card {
+  width: 100%;
+  max-width: 1200px; /* large but not crazy wide on big monitors */
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 18px 20px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+
+/* Generic field & button helpers (used across pages) */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.field input,
+.field select {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+  background: #ffffff;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
+}
+
+.help-text {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.05s, box-shadow 0.1s;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.btn.small {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #2563eb;
+}
+
+.btn-secondary:hover {
+  background: #eff6ff;
+}
+
+/* Utility */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.actions {
+  margin-top: 16px;
+  text-align: right;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 10px 14px;
+  }
+
+  .app-title {
+    font-size: 1.1rem;
+  }
+
+  .app-main {
+    padding: 10px;
+  }
+
+  .app-card,
+  .form-wrapper,
+  .login-card,
+  .dashboard-card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

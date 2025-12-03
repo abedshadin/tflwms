@@ -1,0 +1,202 @@
+/* ===== Admin dashboard + analytics pages ===== */
+
+/* The card already full width from App.css */
+.dashboard-card {
+  width: 100%;
+}
+
+/* Top user text */
+.dashboard-user {
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* Top-right actions row (month picker, buttons) */
+.dashboard-top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.dashboard-title {
+  margin: 2px 0 8px;
+  font-size: 1.2rem;
+}
+
+.dashboard-subtitle {
+  margin: 4px 0 6px;
+  font-size: 1rem;
+}
+
+.admin-buttons-row {
+  margin: 8px 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-main-button {
+  min-width: 150px;
+}
+
+/* Summary cards row */
+.dashboard-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.summary-card {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.summary-card.summary-dry {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.summary-label {
+  font-size: 0.8rem;
+  color: #4b5563;
+  margin-bottom: 3px;
+}
+
+.summary-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Status / error */
+.dashboard-status {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.dashboard-error {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #b91c1c;
+}
+
+/* Month picker */
+.dashboard-month-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.78rem;
+}
+
+.month-label {
+  font-weight: 500;
+  color: #4b5563;
+}
+
+/* Date blocks for day-wise data */
+.dashboard-content {
+  margin-top: 8px;
+}
+
+.dashboard-date-block {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.dashboard-date-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.dashboard-date-label {
+  font-weight: 600;
+  color: #111827;
+}
+
+.dashboard-date-count {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.dashboard-date-total {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Tables (warehouse log & dry page) */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.table th,
+.table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table th {
+  background: #e5e7eb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.table-compact th,
+.table-compact td {
+  padding: 4px 6px;
+  font-size: 0.78rem;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* ===== Mobile ===== */
+
+@media (max-width: 768px) {
+  .dashboard-top-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .admin-buttons-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-main-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dashboard-date-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table th,
+  .table td {
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,136 @@
+/* ===== Inventory form layout ===== */
+
+.inventory-title {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+/* Top grid: full page width, responsive columns */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px 14px;
+  margin-bottom: 12px;
+}
+
+/* Sections */
+.labor-section,
+.item-section,
+.store-section {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.labor-header,
+.item-header,
+.store-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.labor-rows,
+.item-rows,
+.store-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ===== Row layouts (desktop / tablet) ===== */
+
+/* Receiving / Loading rows: Item | Unit | Qty | Remove */
+.item-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.1fr) minmax(0, 1.1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Store rows: Shop | Qty | Remove */
+.store-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Labor rows: Name | Cost | filler */
+.labor-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr) minmax(0, 0.5fr);
+  gap: 8px;
+  align-items: center;
+}
+
+/* Make inputs/selects fill their cell */
+.item-row input,
+.item-row select,
+.store-row input,
+.store-row select,
+.labor-row input {
+  width: 100%;
+}
+
+/* Table wrapper (if you use any preview tables) */
+.table-wrapper {
+  margin-top: 8px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ===== Mobile adjustments ===== */
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr; /* stack top inputs */
+  }
+
+  .labor-section,
+  .item-section,
+  .store-section {
+    padding: 8px;
+  }
+
+  /* Stack row fields vertically for better mobile usability */
+
+  .item-row {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+
+  .store-row {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .labor-row {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  /* Buttons full-width on mobile inside rows */
+  .item-row .btn.small,
+  .store-row .btn.small {
+    justify-content: center;
+  }
+}
+/* One-row layout for Labor Count, Start, End */
+.basic-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px 16px;
+  align-items: end; /* lines up inputs nicely */
+}
+
+/* Mobile: stack fields */
+@media (max-width: 768px) {
+  .basic-row {
+    grid-template-columns: 1fr;
+  }
+}

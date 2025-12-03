@@ -1,0 +1,135 @@
+/* ==== Full-width, mobile-friendly hard overrides ==== */
+
+/* 1) Base */
+html, body, #root {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 2) App shell */
+.app-root {
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 12px 16px !important;
+  background: #111827 !important;
+  color: #f9fafb !important;
+  border-radius: 0 !important;
+  box-shadow: none !important; /* keep as a bar, not a “card” */
+}
+
+.app-title {
+  margin: 0 !important;
+  font-size: 1.15rem !important;
+}
+
+/* 3) Main area + cards */
+.app-main {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 12px !important;          /* page padding */
+  display: block !important;         /* avoid flex centering columns */
+}
+
+.app-card,
+.form-wrapper,
+.login-card,
+.dashboard-card {
+  width: 100% !important;
+  max-width: 100% !important;        /* stretch full width */
+  margin: 0 !important;              /* no side margins */
+  padding: 12px 14px 16px !important;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(15,23,42,.08);
+  background: #fff;
+}
+
+/* 4) Layout utilities */
+.top-bar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 10px !important;
+}
+
+.grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 10px 14px !important;
+}
+
+/* 5) Rows (inventory form pages) */
+.item-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.1fr) minmax(0, 1.1fr) auto !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+.store-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr) auto !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+.labor-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr) minmax(0, .5fr) !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+.item-row input,
+.item-row select,
+.store-row input,
+.store-row select,
+.labor-row input {
+  width: 100% !important;
+}
+
+/* 6) Tables fill & scroll */
+.table-wrapper { width: 100% !important; overflow-x: auto !important; }
+.table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: .85rem !important;
+}
+.table th, .table td {
+  padding: 6px 8px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  white-space: nowrap !important;
+  text-align: left !important;
+}
+.table th {
+  background: #e5e7eb !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+}
+
+/* 7) Mobile stack */
+@media (max-width: 768px) {
+  .app-main { padding: 8px !important; }
+
+  .top-bar { flex-direction: column !important; align-items: flex-start !important; }
+
+  .item-row,
+  .store-row,
+  .labor-row {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+  }
+
+  .admin-buttons-row { flex-direction: column !important; gap: 8px !important; }
+  .admin-main-button { width: 100% !important; }
+}
