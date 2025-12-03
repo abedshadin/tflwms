@@ -117,6 +117,7 @@ function WarehouseLogPage({ token, username, onLogout, onBack }) {
       "End",
       "Rec",
       "Loading",
+      "Remarks",
     ];
     const rows = [header];
 
@@ -128,6 +129,7 @@ function WarehouseLogPage({ token, username, onLogout, onBack }) {
       const laborTotalCost = getRecordLaborCost(it).toFixed(2);
       const start = it.startTime || "";
       const end = it.endTime || "";
+      const remarks = it.remarks || "";
 
       const recText = (it.receiving || [])
         .map((r) => `${r.name || ""} (${r.qty || 0} ${r.unit || ""})`)
@@ -145,6 +147,7 @@ function WarehouseLogPage({ token, username, onLogout, onBack }) {
         end,
         recText,
         loadingText,
+        remarks
       ]);
     });
 
