@@ -296,54 +296,45 @@ function WarehouseLogPage({ token, username, onLogout, onBack }) {
                         <th>Start-End</th>
                         <th>Receiving</th>
                         <th>Loading</th>
+                        <th>Remarks</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {rows.map((it) => {
-                        const dt = it.submittedDateTime
-                          ? new Date(it.submittedDateTime)
-                          : null;
-                        const timeStr = dt
-                          ? dt.toLocaleTimeString(undefined, {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })
-                          : "";
+  {rows.map((it) => {
+    const dt = it.submittedDateTime ? new Date(it.submittedDateTime) : null;
+    const timeStr = dt
+      ? dt.toLocaleTimeString(undefined, {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      : "";
 
-                        const receivingText = (it.receiving || [])
-                          .map(
-                            (r) =>
-                              `${r.name || ""} (${r.qty || 0} ${
-                                r.unit || ""
-                              })`
-                          )
-                          .join(", ");
+    const receivingText = (it.receiving || [])
+      .map((r) => `${r.name || ""} (${r.qty || 0} ${r.unit || ""})`)
+      .join(", ");
 
-                        const loadingText = (it.loading || [])
-                          .map(
-                            (l) =>
-                              `${l.name || ""} (${l.qty || 0} ${
-                                l.unit || ""
-                              })`
-                          )
-                          .join(", ");
+    const loadingText = (it.loading || [])
+      .map((l) => `${l.name || ""} (${l.qty || 0} ${l.unit || ""})`)
+      .join(", ");
 
-                        const recordLaborCost = getRecordLaborCost(it);
+    const recordLaborCost = getRecordLaborCost(it);
 
-                        return (
-                          <tr key={it._id}>
-                            <td>{timeStr}</td>
-                            <td>{it.laborCount}</td>
-                            <td>{recordLaborCost.toFixed(2)}</td>
-                            <td>
-                              {it.startTime} - {it.endTime}
-                            </td>
-                            <td>{receivingText}</td>
-                            <td>{loadingText}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
+    return (
+      <tr key={it._id}>
+        <td>{timeStr}</td>
+        <td>{it.laborCount}</td>
+        <td>{recordLaborCost.toFixed(2)}</td>
+        <td>
+          {it.startTime} - {it.endTime}
+        </td>
+        <td>{receivingText}</td>
+        <td>{loadingText}</td>
+        <td>{it.remarks || "-"}</td> {/* 👈 NEW CELL */}
+      </tr>
+    );
+  })}
+</tbody>
+
                   </table>
                 </div>
               </section>
