@@ -8,6 +8,7 @@ function InventoryForm({ token, username, onLogout }) {
   const [laborCount, setLaborCount] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [remarks, setRemarks] = useState("");
 
   const [labors, setLabors] = useState([]); // { name, cost }
   const [receiving, setReceiving] = useState([{ name: "", unit: "", qty: "" }]);
@@ -79,16 +80,18 @@ function InventoryForm({ token, username, onLogout }) {
       return;
     }
 
-    const payload = {
-      submittedDateTime,
-      laborCount,
-      startTime,
-      endTime,
-      labors,
-      receiving,
-      loading,
-      stores: anyLoadingItemFilled ? stores : [],
-    };
+  const payload = {
+  submittedDateTime,
+  laborCount,
+  startTime,
+  endTime,
+  remarks, // 👈 NEW
+  labors,
+  receiving,
+  loading,
+  stores: anyLoadingItemFilled ? stores : [],
+};
+
 
     try {
       const res = await api.post("/inventory", payload, {
@@ -100,6 +103,8 @@ function InventoryForm({ token, username, onLogout }) {
       setLabors([]);
       setStartTime("");
       setEndTime("");
+      setRemarks("");
+
       setReceiving([{ name: "", unit: "", qty: "" }]);
       setLoading([{ name: "", unit: "", qty: "" }]);
       setStores([{ shop: "", qty: "" }]);
@@ -515,6 +520,18 @@ function InventoryForm({ token, username, onLogout }) {
             </div>
           </section>
         )}
+<section className="section">
+  <h2 className="section-title">Remarks</h2>
+  <div className="field">
+    <textarea
+      className="textarea"
+      placeholder="Write any notes or remarks here…"
+      value={remarks}
+      onChange={(e) => setRemarks(e.target.value)}
+      rows={3}
+    ></textarea>
+  </div>
+</section>
 
         <div className="form-actions">
           <button type="submit" className="btn btn-primary">

@@ -35,6 +35,7 @@ const inventorySchema = new mongoose.Schema({
   receiving: [itemSchema],
   loading: [itemSchema],
   stores: [storeSchema],
+  remarks: { type: String, default: "" }, 
 });
 
 module.exports = mongoose.model("Inventory", inventorySchema);
